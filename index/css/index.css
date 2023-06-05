@@ -1,0 +1,586 @@
+@charset "UTF-8";
+@import url('https://fonts.googleapis.com/css2?family=Dela+Gothic+One&family=Noto+Sans+TC:wght@300;400&family=Roboto:wght@300;400&display=swap');
+
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+embed,
+figure,
+figcaption,
+footer,
+header,
+hgroup,
+menu,
+nav,
+output,
+ruby,
+section,
+summary,
+time,
+mark,
+audio,
+video {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
+    box-sizing: border-box;
+}
+
+/* HTML5 display-role reset for older browsers */
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+    display: block;
+}
+
+body {
+    line-height: 1;
+}
+
+ol,
+ul {
+    list-style: none;
+}
+
+blockquote,
+q {
+    quotes: none;
+}
+
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+    content: '';
+    content: none;
+}
+
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+*,
+*:before,
+*:after {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Microsoft JhengHei;
+}
+
+
+/* css開始 */
+/* 共同設定 */
+a {
+    text-decoration: none;
+}
+
+.en-1 {
+    font-size: 1.5rem;
+    font-family: 'Roboto', sans-serif;
+    color: #1E1E1E;
+}
+
+.en-3 {
+    font-size: 1rem;
+    font-family: 'Roboto', sans-serif;
+    color: #1E1E1E;
+}
+
+.en-4 {
+    font-size: .8rem;
+    font-family: 'Roboto', sans-serif;
+    color: #1E1E1E;
+}
+
+.ch-4 {
+    font-size: .9rem;
+    font-family: 'Noto Sans TC', sans-serif;
+    letter-spacing: .05rem;
+    color: #1E1E1E;
+}
+
+.special-heading {
+    font-size: 3.6rem;
+    font-family: 'Dela Gothic One', cursive;
+    color: #1E1E1E;
+}
+
+
+
+/* ---------------header--------------- */
+
+header {
+    background-color: #1E1E1E;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    color: rgb(255, 255, 255);
+}
+
+header h3.en-3 {
+    font-weight: 300;
+    color: white;
+}
+
+header img {
+    margin: 0 15px;
+}
+
+header h3.email {
+    background-color: #D7F367;
+    margin-right: 15px;
+    font-weight: 400;
+    color: #1E1E1E;
+}
+
+header h4 a {
+    padding: 3px 8px;
+    border: 1px solid white;
+    border-radius: 20px;
+    color: rgb(255, 255, 255);
+}
+
+header h4 a:hover {
+    padding: 3px 8px;
+    background-color: white;
+    border-radius: 20px;
+    color: #1E1E1E;
+    transition: all .35s;
+}
+
+
+/* --------------- 漢堡選單 --------------- */
+/* 點擊後的視窗 */
+.wrapper {
+    position: fixed;
+    top: 0;
+    /* 設定容器與視窗頂部的距離為 0 */
+    right: -100%;
+    height: 100%;
+    width: 100%;
+    background: #000000e8;
+    z-index: 5;
+    transition: all 0.6s ease-in-out;
+    /* 0.6 秒的時間進行平滑過渡 */
+}
+
+/* 當勾選框 #active 被選中時，設定選單容器的樣式 */
+#active:checked~.wrapper {
+    right: 0;
+    /* 將容器的右邊界設置為 0，使其從右側滑入視窗內顯示。 */
+}
+
+/* 設定選單按鈕的樣式 */
+.menu-btn {
+    position: absolute;
+    /* 將按鈕絕對定位 */
+    z-index: 20;
+    right: 8%;
+    /*left: 20px; */
+    top: 40px;
+    height: 40px;
+    width: 60px;
+    text-align: center;
+    line-height: 0px;
+    font-size: 20px;
+    cursor: pointer;
+    /* 設置鼠標指針在元素上時的顯示樣式 */
+    transition: all 0.3s ease-in-out;
+    background-color: #D7F367;
+
+}
+
+/* 設定選單按鈕的樣式，包括中間的線和兩側的斜線 */
+.menu-btn span,
+.menu-btn:before,
+.menu-btn:after {
+    content: "";
+    /* 設定元素的內容為空。 */
+    position: absolute;
+    /* 將元素絕對定位。 */
+    top: calc(50% - 1px);
+    /* 將元素的頂部定位在距離父元素頂部垂直居中的位置，並向上偏移 1px */
+    left: 30%;
+    width: 40%;
+    border-bottom: 2px solid #000;
+
+    transition: transform .6s cubic-bezier(0.215, 0.61, 0.355, 1);
+    /* 變形效果在 0.6 秒內以 cubic-bezier 函數指定的貝塞爾曲線進行平滑過渡 */
+}
+
+.menu-btn:before {
+    /* --------------- */
+    transform: translateY(-8px);
+    /* 向上移動8像素的垂直位移 */
+}
+
+.menu-btn:after {
+    /* --------------- */
+    transform: translateY(8px);
+    /* 向下移動8像素的垂直位移 */
+}
+
+
+/* 設定遮罩層的樣式 */
+.close {
+    z-index: 10;
+    width: 100%;
+    /* 遮罩層的寬度為 100% */
+    height: 100%;
+    /* 遮罩層的高度為 100% */
+    pointer-events: none;
+    transition: background .6s;
+}
+
+/* 當勾選框 #active 被選中時，設定選單按鈕中間的線的樣式 */
+#active:checked+.menu-btn span {
+    transform: scaleX(0);
+    /* 將中間的線的水平縮放比例設為 0，從而使其變為一條細線隱藏起來 */
+}
+
+/* 當勾選框 #active 被選中時，設定選單按鈕左側的斜線的樣式 */
+#active:checked+.menu-btn:before {
+    transform: rotate(45deg);
+    /* 斜線元素以 -45 度角旋轉，使其呈現一個斜向上的線段 */
+
+}
+
+#active:checked+.menu-btn:after {
+    transform: rotate(-45deg);
+    /* 斜線元素以 45 度角旋轉，使其呈現一個斜向上的線段 */
+
+}
+
+
+/* 設定選單項目清單的樣式 */
+.wrapper ul {
+    position: absolute;
+    /* 將選單項目清單絕對定位 */
+    top: 60%;
+    left: 50%;
+    height: 90%;
+    transform: translate(-50%, -50%);
+    list-style: none;
+    text-align: center;
+}
+
+/* 設定選單項目清單中每個項目的樣式 */
+.wrapper ul li {
+    height: 10%;
+}
+
+/* 設定選單項目清單中的連結的樣式。 */
+.wrapper ul li a {
+    text-decoration: none;
+    font-size: 30px;
+    font-weight: 500;
+    color: #fff;
+    line-height: 50px;
+    opacity: 0;
+    transition: all 0.3s ease;
+    transition: transform .6s cubic-bezier(0.215, 0.61, 0.355, 1);
+
+}
+
+.wrapper ul li img {
+    margin-right: 12px;
+}
+
+.wrapper ul li a:hover {
+    text-decoration: none;
+    font-size: 30px;
+    font-weight: 500;
+    color: #D7F367;
+    line-height: 50px;
+    opacity: 0;
+    transition: all 0.3s ease;
+    transition: transform .6s cubic-bezier(0.215, 0.61, 0.355, 1);
+
+}
+
+/* 設定選單項目清單中連結的擴展效果 */
+.wrapper ul li a:after {
+    position: absolute;
+    /* 將元素絕對定位 */
+    content: "";
+    /* 設定元素的內容為空 */
+    transform: scaleY(0);
+    /* 將元素的垂直方向上的縮放比例設定為 0，使其在垂直方向上不可見 */
+    z-index: -1;
+    transition: transform 0.3s ease;
+}
+
+/* 滑鼠懸停在選單項目連結上時，設定連結的擴展效果 */
+.wrapper ul li a:hover:after {
+    transform: scaleY(1);
+    /* 將連結元素的垂直方向上的縮放比例設定為 1，使其在垂直方向上完全可見 */
+}
+
+/* checkbox 的輸入元素的樣式 */
+input[type="checkbox"] {
+    display: none;
+    /* 將輸入元素設定為不可見 */
+}
+
+/* 勾選框 #active 被選中且其後的 .wrapper ul li a 元素被選中時，設定選單項目連結的樣式。 */
+#active:checked~.wrapper ul li a {
+    opacity: 1;
+    /* 將連結元素的透明度設定為 1，使其可見 */
+}
+
+.wrapper ul li a {
+    transition: opacity 1.2s, transform 1.2s cubic-bezier(0.215, 0.61, 0.355, 1);
+    /* 設定元素的過渡效果，包括不透明度（opacity）和變形（transform）的過渡，過渡時間為1.2秒，過渡效果使用了 cubic-bezier 函數指定的時間曲線 */
+    transform: translateX(100px);
+    /* 將元素在水平方向上向右平移100像素 */
+}
+
+#active:checked~.wrapper ul li a {
+    transform: none;
+    transition-timing-function: ease, cubic-bezier(.1, 1.3, .3, 1);
+    /* 設定元素的過渡時間函數，包括 ease 和 cubic-bezier 函數指定的時間曲線。 */
+    transition-delay: .6s;
+    /* 設定過渡效果的延遲時間為0.6秒 */
+    transform: translateX(-100px);
+    /* 水平方向上向左平移100像素 */
+}
+
+/* ---------------main--------------- */
+main {
+    margin: 0 auto 100px;
+    width: 1050px;
+}
+
+/* ---------------title--------------- */
+main .title .author {
+    display: flex;
+    margin: 60px 0 20px 0;
+}
+
+main .title .author h1.en-1 {
+    margin-right: 10px;
+}
+
+.rotate-image {
+    animation: rotation 4s linear infinite;
+  }
+  
+  @keyframes rotation {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }
+
+
+
+  /* 跑馬燈 */
+  
+  main .title .projectof .special-heading {
+    margin-right: 10px;
+    width: 350px;
+    white-space: nowrap;
+  }
+ 
+  
+  main .title .projectof {
+    display: flex;
+    margin-bottom: 5px;
+    align-items: center;
+  }
+  
+  main .title .projectof .slideshow {
+    position: relative;
+    overflow: hidden;
+    height: 84px;
+    width: 473px;
+  }
+  
+  main .title .projectof .slideshow img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: auto;
+    opacity: 0;
+    transition: opacity 0.5s ease-in;
+  }
+  
+  .projectof .slideshow img.active {
+    opacity: 1;
+  }
+  
+  .projectof .slideshow img {
+    animation: slideshow 2s linear infinite;
+  }
+  
+  @keyframes slideshow {
+    0% {
+      opacity: 0;
+      transform: translateY(-100%);
+    }
+    10% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    90% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    100% {
+      opacity: 0;
+      transform: translateY(100%);
+    }
+  }
+  
+
+/* 技能分類 */
+
+main .title .skills {
+    display: flex;
+    margin: 30px 0 60px 0;
+}
+
+main .title .skills a {
+    border: 1px solid #1E1E1E;
+    border-radius: 20px;
+    /* text-decoration: none; */
+    padding: 5px 10px;
+    margin-right: 6px;
+    color: #1E1E1E;
+}
+
+main .title .skills a:hover {
+    border: 1px solid #1E1E1E;
+    border-radius: 20px;
+    background-color: #D7F367;
+    /* text-decoration: none; */
+    padding: 5px 10px;
+    margin-right: 6px;
+    transition: all .35s;
+}
+
+
+
+/* ---------------project--------------- */
+
+main .project {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 12px;
+}
+
+main .project article {
+    margin-bottom: 30px;
+}
+
+main .project article h4.ch-4 {
+    margin-top: 10px;
+    color: #1E1E1E;
+}
+
+main .project article {
+    font-weight: 600;
+}
+
+.box {
+    width: 100%;
+  }
+  
+  .image-container {
+    position: relative;
+    display: inline-block;
+    overflow: hidden;
+    height: fit-content;
+  }
+  
+  .image-container img {
+    display: block;
+    transition: transform 0.3s ease;
+    height: 100%;
+  }
+  
+  .image-container:hover img {
+    transform: scale(1.05)
+  }
+  
